@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coding Enthusiast</title>
+
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!--
+    - #MAIN
+  -->
+
+  <main>
+
+    <!--
+      - #SIDEBAR
+    -->
+
+    <aside class="sidebar" data-sidebar>
+
+      <div class="sidebar-info">
+
+        <figure class="avatar-box">
+          <img src="./assets/images/icon-dev.svg" alt="Coding Enthusiast" width="80">
+        </figure>
+
+        <div class="info-content">
+          <h1 class="name" title="Coding Enthusiast">Coding Enthusiast</h1>
+
+          <p class="title">Web development</p>
+        </div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+  <!-- EMAIL -->
+  <li class="contact-item">
+
+    <div class="icon-box">
+      <ion-icon name="mail-outline"></ion-icon>
+    </div>
+
+    <div class="contact-info">
+      <p class="contact-title">Email</p>
+
+      <a 
+        href="mailto:codingenthusiastofficial@gmail.com?subject=Website%20Enquiry%20-%20Coding%20Enthusiast"
+        class="contact-link">
+        codingenthusiastofficial@gmail.com
+      </a>
+    </div>
+
+  </li>
+
+  <!-- PHONE -->
+  <li class="contact-item">
+
+    <div class="icon-box">
+      <ion-icon name="phone-portrait-outline"></ion-icon>
+    </div>
+
+    <div class="contact-info">
+      <p class="contact-title">Phone</p>
+
+      <a href="tel:+919630191571" class="contact-link">
+        +91 96301 91571
+      </a>
+    </div>
+
+  </li>
+
+  <!-- LOCATION -->
+  <li class="contact-item">
+
+    <div class="icon-box">
+      <ion-icon name="location-outline"></ion-icon>
+    </div>
+
+    <div class="contact-info">
+      <p class="contact-title">Location</p>
+
+      <a 
+        href="https://www.google.com/maps?q=Sudama+Nagar+Indore+India"
+        target="_blank"
+        rel="noopener"
+        class="contact-link">
+        Sudama Nagar, Indore, India
+      </a>
+    </div>
+
+  </li>
+
+</ul>
+
+
+       <div class="separator"></div>
+
+<ul class="social-list">
+
+  <!-- YOUTUBE -->
+  <li class="social-item">
+    <a 
+      href="https://www.youtube.com/@Coding_Enhusiast"
+      target="_blank"
+      rel="noopener"
+      class="social-link"
+      aria-label="YouTube">
+      <ion-icon name="logo-youtube"></ion-icon>
+    </a>
+  </li>
+
+  <!-- INSTAGRAM -->
+  <li class="social-item">
+    <a 
+      href="https://www.instagram.com/kartikratnawat/"
+      target="_blank"
+      rel="noopener"
+      class="social-link"
+      aria-label="Instagram">
+      <ion-icon name="logo-instagram"></ion-icon>
+    </a>
+  </li>
+
+  <!-- LINKEDIN -->
+  <li class="social-item">
+    <a 
+      href="https://www.linkedin.com/in/kartik-ratnawat-67419831a/"
+      target="_blank"
+      rel="noopener"
+      class="social-link"
+      aria-label="LinkedIn">
+      <ion-icon name="logo-linkedin"></ion-icon>
+    </a>
+  </li>
+
+</ul>
+
+
+    </aside>
+
+
+
+
+
+    <!--
+      - #main-content
+    -->
+
+    <div class="main-content">
+
+      <!--
+        - #NAVBAR
+      -->
+
+      <nav class="navbar">
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <button class="navbar-link  active" data-nav-link>About Us</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Portfolio</button>
+          </li>
+
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Contact</button>
+          </li>
+
+        </ul>
+
+      </nav>
+
+
+
+
+
+      <!--
+        - #ABOUT
+      -->
+
+      <article class="about  active" data-page="about us">
+
+        <header>
+          <h2 class="h2 article-title">About Us</h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+           Coding Enthusiast Web Solutions is an Indore-based digital firm creating professional websites for marriage gardens and local businesses.
+          </p>
+
+          <p>
+            We focus on clean design, easy navigation and enquiry-focused layouts that help businesses attract and convert visitors effectively.
+          </p>
+        </section>
+
+
+        <!--
+          - service
+        -->
+
+        <section class="service">
+
+          <h3 class="h3 service-title">What are we doing</h3>
+
+          <ul class="service-list">
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-design.svg
+                " alt="design icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Web design</h4>
+
+                <p class="service-item-text">
+                  The most modern and high-quality design made at a professional level.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Web development</h4>
+
+                <p class="service-item-text">
+                  High-quality development of sites at the professional level.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Mobile apps</h4>
+
+                <p class="service-item-text">
+                  Professional development of applications for Android.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-photo.svg" alt="camera icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Photography</h4>
+
+                <p class="service-item-text">
+                  We make high-quality photos of any category at a professional level.
+                </p>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+
+        <!--
+          - testimonials
+        -->
+
+        <section class="testimonials">
+
+          <h3 class="h3 testimonials-title">Our Team</h3>
+
+          <ul class="testimonials-list has-scrollbar">
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Kartik Ratnawat</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Kartik is the founder and head of Coding Enthusiast Web Solutions.
+                    He leads the overall vision, client communication, and project execution.
+                    With a strong interest in web development and digital products, he focuses on building simple, functional, and business-oriented websites.
+
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-1.png" alt="Jessica miller" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Keshav Agrawal</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Keshav is a core team member who supports development and implementation tasks.
+                    He actively contributes to website structure, testing, and improvements while continuously learning new technologies.
+
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-1.png" alt="Emily evans" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Shreyansh Tiwari</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Shreyansh handles design coordination, content organisation, and project support.
+                    He is also responsible for professional photography and videography, helping capture high-quality visuals and videos that enhance website presentation and digital branding.
+                    His work focuses on creating visually appealing and engaging media aligned with client requirements.
+
+
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+           
+
+          </ul>
+
+        </section>
+
+
+        <!--
+          - testimonials modal
+        -->
+
+        <div class="modal-container" data-modal-container>
+
+          <div class="overlay" data-overlay></div>
+
+          <section class="testimonials-modal">
+
+            <button class="modal-close-btn" data-modal-close-btn>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+            <div class="modal-img-wrapper">
+              <figure class="modal-avatar-box">
+                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
+              </figure>
+
+              <img src="./assets/images/icon-quote.svg" alt="quote icon">
+            </div>
+
+            <div class="modal-content">
+
+              <h4 class="h3 modal-title" data-modal-title>Daniel lewis</h4>
+
+              <time datetime="2021-06-14"></time>
+
+              <div data-modal-text>
+                <p>
+                  Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
+                  lot of experience
+                  and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
+                  consectetur adipiscing
+                  elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                </p>
+              </div>
+
+            </div>
+
+          </section>
+
+        </div>
+
+
+        <!--
+          - clients
+        -->
+
+        <section class="clients">
+
+          <h3 class="h3 clients-title"></h3>
+
+         
+
+        </section>
+
+      </article>
+
+
+
+
+      <!--
+        - #PORTFOLIO
+      -->
+
+      <article class="portfolio" data-page="portfolio">
+
+        <header>
+          <h2 class="h2 article-title">Portfolio</h2>
+        </header>
+
+        <section class="projects">
+
+          <ul class="filter-list">
+
+            <li class="filter-item">
+              <button class="active" data-filter-btn>All</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Web design</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Applications</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Web development</button>
+            </li>
+
+          </ul>
+
+          <div class="filter-select-box">
+
+            <button class="filter-select" data-select>
+
+              <div class="select-value" data-selecct-value>Select category</div>
+
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div>
+
+            </button>
+
+            <ul class="select-list">
+
+              <li class="select-item">
+                <button data-select-item>All</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Web design</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Applications</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Web development</button>
+              </li>
+
+            </ul>
+
+          </div>
+
+          <ul class="project-list">
+
+            <li class="project-item active" data-filter-item data-category="web development">
+              <a href="#" onclick="alert('Project coming soon 🚀')">
+
+   <figure class="project-img">
+      <div class="project-item-icon-box">
+        <ion-icon name="eye-outline"></ion-icon>
+      </div>
+
+      <img src="./assets/images/project-1.jpg" alt="finance" loading="lazy">
+    </figure>
+
+    <h3 class="project-title">Finance</h3>
+    <p class="project-category">IPO Recommendation</p>
+
+  </a>
+</li>
+
+
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="https://qrcodefree.in" target="_blank" rel="noopener">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-2.png" alt="orizon" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">QR CODE GENERATOR</h3>
+
+                <p class="project-category">Web development</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web design">
+              <a href="https://ratnawat-01.github.io/To_Do_List_AI_Integrated-/" target="_blank" rel="noopener">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-3.jpg" alt="fundo" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">To Do List</h3>
+
+                <p class="project-category">Web design</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="applications">
+              <a href="https://ratnawat-01.github.io/studyroom/" target="_blank" rel="noopener">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-4.png" alt="brawlhalla" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Study Room</h3>
+
+                <p class="project-category">Web design</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web design">
+              <a href="https://ratnawat-01.github.io/kkdhanotiyaflat/" target="_blank" rel="noopener">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-5.png" alt="dsm." loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Flat details</h3>
+
+                <p class="project-category">Web design</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web design">
+              <a href="https://ratnawat-01.github.io/MBA_TECH_TT/" target="_blank" rel="noopener">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-6.png" alt="metaspark" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Table Tennis Tournament</h3>
+
+                <p class="project-category">Web design</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="https://ratnawat-01.github.io/CodingEnthusiast/darkpdf.html" target="_blank" rel="noopener">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-7.png" alt="summary" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Dark Mode Extension</h3>
+
+                <p class="project-category">Web development</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="applications">
+              <a href="https://ratnawat-01.github.io/CodingEnthusiast/modulemanager.html" target="_blank" rel="noopener">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-8.jpg" alt="task manager" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Module Manager Extension</h3>
+
+                <p class="project-category">Web Development</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="https://ratnawat-01.github.io/CodingEnthusiast/youtube_redesigned.html" target="_blank" rel="noopener">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-9.png" alt="arrival" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Youtube Extension</h3>
+
+                <p class="project-category">Web development</p>
+
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+      
+      <!--
+        - #CONTACT
+      -->
+
+      <article class="contact" data-page="contact">
+
+        <header>
+          <h2 class="h2 article-title">Contact</h2>
+        </header>
+
+        <section class="mapbox" data-mapbox>
+  <figure>
+    <iframe
+      src="https://www.google.com/maps?q=22.6886585,75.8311996&z=16&output=embed"
+      width="400"
+      height="300"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </figure>
+</section>
+
+
+        <section class="contact-form">
+
+  <h3 class="h3 form-title">Contact Form</h3>
+
+  <form class="form" id="whatsappForm">
+
+    <div class="input-wrapper">
+      <input type="text" id="fullname" class="form-input" placeholder="Full name" required>
+      <input type="email" id="email" class="form-input" placeholder="Email address" required>
+    </div>
+
+    <textarea id="message" class="form-input" placeholder="Your Message" required></textarea>
+
+    <button class="form-btn" type="submit">
+      <ion-icon name="paper-plane"></ion-icon>
+      <span>Send Whatsapp Message</span>
+    </button>
+
+  </form>
+
+</section>
+
+
+      </article>
+
+    </div>
+
+  </main>
+
+
+
+
+
+
+  <!--
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+  <script>
+document.getElementById("whatsappForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("fullname").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  const whatsappNumber = "919630191571"; // 🔴 REPLACE WITH YOUR NUMBER
+
+  const whatsappMessage =
+    `Hello Coding Enthusiast 👋%0A%0A` +
+    `New Contact Enquiry Received:%0A%0A` +
+    `Name: ${name}%0A` +
+    `Email: ${email}%0A` +
+    `Message: ${message}%0A%0A` +
+    `Please get back soon.`;
+
+  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+  window.open(whatsappURL, "_blank");
+});
+</script>
+
+</body>
+
+</html>
