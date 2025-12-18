@@ -726,6 +726,27 @@ main {
  * #clients 
  */
 
+ .client-name {
+  margin-top: 8px;
+  font-size: 14px;
+  text-align: center;
+  color: #e5e5e5;
+  font-weight: 500;
+}
+.clients-item img {
+  max-width: 260px;   /* 🔽 image chhoti ho jaayegi */
+  max-height: 250px;
+  object-fit: contain;
+  margin: 0 auto;
+  display: block;
+}
+
+.clients-item {
+  padding: 20px;
+}
+
+
+
 .clients { margin-bottom: 15px; }
 
 .clients-list {
