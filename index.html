@@ -758,7 +758,7 @@
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 
-  <script>
+<script>
 document.getElementById("whatsappForm").addEventListener("submit", function(e) {
   e.preventDefault();
 
@@ -766,21 +766,23 @@ document.getElementById("whatsappForm").addEventListener("submit", function(e) {
   const email = document.getElementById("email").value.trim();
   const message = document.getElementById("message").value.trim();
 
-  const whatsappNumber = "919630191571"; // 🔴 REPLACE WITH YOUR NUMBER
+  const whatsappNumber = "919630191571"; // aapka number
+  const brochureLink = "https://yourdomain.netlify.app/assets/Coding_Enthusiast_Brochure.pdf";
 
   const whatsappMessage =
     `Hello Coding Enthusiast 👋%0A%0A` +
-    `New Contact Enquiry Received:%0A%0A` +
+    `New Website Enquiry Received:%0A%0A` +
     `Name: ${name}%0A` +
     `Email: ${email}%0A` +
     `Message: ${message}%0A%0A` +
-    `Please get back soon.`;
+    `📄 Download our brochure here:%0A${brochureLink}`;
 
   const whatsappURL = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
   window.open(whatsappURL, "_blank");
 });
 </script>
+
 
 </body>
 
