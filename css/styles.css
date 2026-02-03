@@ -874,36 +874,32 @@ Wait, user said "Pause animation on hover (desktop only)".
     textarea {
         width: 100%;
         padding: 16px 20px;
-        background: rgba(0, 0, 0, 0.2);
-        backdrop-filter: blur(4px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        /* Subtle border */
-        border-radius: 16px;
-        /* Smooth rounded corners */
-        box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
-        /* Soft inner shadow */
-        color: #e0e0e0;
-        /* Soft white */
+        background: rgba(10, 10, 15, 0.8); /* Deep charcoal background */
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 242, 234, 0.2); /* Soft accent border */
+        border-radius: 12px;
+        box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5); /* Inner depth */
+        color: #f0f0f0; /* Soft white text */
         font-family: var(--font-body);
         font-size: 1rem;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        margin-top: 0.5rem; /* Spacing from label */
     }
 
     input::placeholder,
     textarea::placeholder {
-        color: #666;
-        /* Muted grey */
-        opacity: 0.8;
+        color: #888; /* Muted grey */
+        font-weight: 400;
+        letter-spacing: 0.02em;
     }
 
     input:focus,
     textarea:focus {
         outline: none;
-        border-color: var(--primary);
-        background: rgba(0, 0, 0, 0.4);
-        box-shadow: 0 0 20px rgba(0, 242, 234, 0.15), inset 0 2px 10px rgba(0, 0, 0, 0.5);
-        /* Glow + Inner Shadow */
-        transform: translateY(-1px);
+        border-color: var(--primary); /* Bright accent on focus */
+        background: rgba(10, 10, 15, 0.95); /* Slightly clearer */
+        box-shadow: 0 0 15px rgba(0, 242, 234, 0.2), inset 0 2px 5px rgba(0, 0, 0, 0.5);
+        transform: translateY(-2px);
     }
 
     /* Footer */

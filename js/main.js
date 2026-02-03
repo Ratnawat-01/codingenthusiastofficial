@@ -124,148 +124,147 @@ Name: ${name}
 Message: ${message}`;
 
             const encodedMessage = encodeURIComponent(whatsappMessage);
-            const whatsappURL = `https://wa.me/919826251184?text=${encodedMessage}`;
+            const whatsappURL = `https://wa.me/918989156956?text=${encodedMessage}`;
 
             window.open(whatsappURL, '_blank');
         });
     }
 
     // --- MARQUEE SCROLL CONTROL ---
-    const track = document.querySelector('.marquee-track');
-    const container = document.querySelector('.marquee-container');
-    const prevBtn = document.querySelector('.prev-arrow');
-    const nextBtn = document.querySelector('.next-arrow');
+    const marqueeContainers = document.querySelectorAll('.marquee-container');
 
-    if (track && container) {
-        let scrollPos = 0;
-        let velocity = -0.5; // Initial speed (moving left)
-        const baseSpeed = -0.6; // Target auto-scroll speed
-        let isDragging = false;
-        let startX = 0;
-        let startScrollPos = 0;
-        let isPaused = false;
-        let resumeTimeout;
+    marqueeContainers.forEach(container => {
+        const track = container.querySelector('.marquee-track');
+        const prevBtn = container.querySelector('.prev-arrow');
+        const nextBtn = container.querySelector('.next-arrow');
 
-        // Calculate single set width (assumes 3 duplicate sets)
-        // We use a function to update it on resize
-        const getSetWidth = () => {
-            // If track has valid width, return 1/3
-            // Fallback to a large number if not ready
-            return (track.scrollWidth > 0) ? track.scrollWidth / 3 : 1;
-        };
-        let setWidth = getSetWidth();
+        if (track) {
+            let scrollPos = 0;
+            let velocity = -0.5; // Initial speed (moving left)
+            const baseSpeed = -0.6; // Target auto-scroll speed
+            let isDragging = false;
+            let startX = 0;
+            let startScrollPos = 0;
+            let isPaused = false;
+            let resumeTimeout;
 
-        window.addEventListener('resize', () => {
-            setWidth = getSetWidth();
-        });
+            // Calculate single set width (assumes 3 duplicate sets)
+            // We use a function to update it on resize
+            const getSetWidth = () => {
+                // If track has valid width, return 1/3
+                // Fallback to a large number if not ready
+                return (track.scrollWidth > 0) ? track.scrollWidth / 3 : 1;
+            };
+            let setWidth = getSetWidth();
 
-        // Animation Loop
-        function animate() {
-            if (!isDragging) {
-                // If paused, velocity targets 0
-                // If running, velocity targets baseSpeed
-                const targetV = isPaused ? 0 : baseSpeed;
+            window.addEventListener('resize', () => {
+                setWidth = getSetWidth();
+            });
 
-                // Smooth accel/decel (Physics)
-                velocity += (targetV - velocity) * 0.05;
+            // Animation Loop
+            function animate() {
+                if (!isDragging) {
+                    // If paused, velocity targets 0
+                    // If running, velocity targets baseSpeed
+                    const targetV = isPaused ? 0 : baseSpeed;
 
-                scrollPos += velocity;
+                    // Smooth accel/decel (Physics)
+                    velocity += (targetV - velocity) * 0.05;
+
+                    scrollPos += velocity;
+                }
+
+                // Infinite Loop Reset (Seamless)
+                // If scrolled too far left (negative)
+                if (scrollPos <= -setWidth) {
+                    scrollPos += setWidth;
+                }
+                // If scrolled too far right (positive)
+                if (scrollPos > 0) {
+                    scrollPos -= setWidth;
+                }
+
+                track.style.transform = `translateX(${scrollPos}px)`;
+                requestAnimationFrame(animate);
             }
 
-            // Infinite Loop Reset (Seamless)
-            // If scrolled too far left (negative)
-            if (scrollPos <= -setWidth) {
-                scrollPos += setWidth;
-            }
-            // If scrolled too far right (positive)
-            if (scrollPos > 0) {
-                scrollPos -= setWidth;
-            }
-
-            track.style.transform = `translateX(${scrollPos}px)`;
+            // Start Loop
             requestAnimationFrame(animate);
-        }
 
-        // Start Loop
-        requestAnimationFrame(animate);
+            // --- Drag / Swipe ---
+            const startDrag = (e) => {
+                isDragging = true;
+                startX = e.pageX || e.touches[0].pageX;
+                startScrollPos = scrollPos;
+                track.style.cursor = 'grabbing';
+                track.classList.add('dragging');
 
-        // --- Drag / Swipe ---
-        const startDrag = (e) => {
-            isDragging = true;
-            startX = e.pageX || e.touches[0].pageX;
-            startScrollPos = scrollPos;
-            track.style.cursor = 'grabbing';
-            track.classList.add('dragging');
-
-            // Stop any resume timers
-            clearTimeout(resumeTimeout);
-            isPaused = true; // Pause auto logic (velocity reset)
-            velocity = 0; // Stop momentum immediately on grab
-        };
-
-        const moveDrag = (e) => {
-            if (!isDragging) return;
-            const x = e.pageX || e.touches[0].pageX;
-            const walk = x - startX;
-            scrollPos = startScrollPos + walk;
-        };
-
-        const endDrag = (e) => {
-            if (!isDragging) return;
-            isDragging = false;
-            track.style.cursor = 'grab';
-            track.classList.remove('dragging');
-
-            // Optionally calculate throw velocity here?
-            // For now, simple resume
-            resumeTimeout = setTimeout(() => {
-                isPaused = false;
-            }, 1000);
-        };
-
-        track.addEventListener('mousedown', startDrag);
-        track.addEventListener('touchstart', startDrag);
-
-        window.addEventListener('mousemove', moveDrag);
-        window.addEventListener('touchmove', moveDrag);
-
-        window.addEventListener('mouseup', endDrag);
-        window.addEventListener('touchend', endDrag);
-
-        // --- Arrows ---
-        if (prevBtn) {
-            prevBtn.addEventListener('click', () => {
-                // Impulse Right
-                velocity = 15; // Fast burst right
-                isPaused = false; // Ensure it moves
-                // After impulse, it will decay back to baseSpeed
-
-                // Briefly pause auto-force to let impulse play out?
-                // The physics loop handles it: velocity decays to baseSpeed (-0.5).
-                // 15 -> 14... -> -0.5
-            });
-        }
-
-        if (nextBtn) {
-            nextBtn.addEventListener('click', () => {
-                // Impulse Left
-                // Current speed is -0.5. We want a burst left.
-                velocity = -15;
-                isPaused = false;
-            });
-        }
-
-        // --- Hover Pause (Desktop) ---
-        container.addEventListener('mouseenter', () => {
-            // Only pause if not dragging
-            if (!isDragging) isPaused = true;
-        });
-
-        container.addEventListener('mouseleave', () => {
-            if (!isDragging) {
-                isPaused = false;
+                // Stop any resume timers
                 clearTimeout(resumeTimeout);
+                isPaused = true; // Pause auto logic (velocity reset)
+                velocity = 0; // Stop momentum immediately on grab
+            };
+
+            const moveDrag = (e) => {
+                if (!isDragging) return;
+                const x = e.pageX || e.touches[0].pageX;
+                const walk = x - startX;
+                scrollPos = startScrollPos + walk;
+            };
+
+            const endDrag = (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                track.style.cursor = 'grab';
+                track.classList.remove('dragging');
+
+                // Optionally calculate throw velocity here?
+                // For now, simple resume
+                resumeTimeout = setTimeout(() => {
+                    isPaused = false;
+                }, 1000);
+            };
+
+            track.addEventListener('mousedown', startDrag);
+            track.addEventListener('touchstart', startDrag);
+
+            window.addEventListener('mousemove', moveDrag);
+            window.addEventListener('touchmove', moveDrag);
+
+            window.addEventListener('mouseup', endDrag);
+            window.addEventListener('touchend', endDrag);
+
+            // --- Arrows ---
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    // Impulse Right
+                    velocity = 15; // Fast burst right
+                    isPaused = false; // Ensure it moves
+                    // After impulse, it will decay back to baseSpeed
+                });
             }
-        });
-    }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    // Impulse Left
+                    // Current speed is -0.5. We want a burst left.
+                    velocity = -15;
+                    isPaused = false;
+                });
+            }
+
+            // --- Hover Pause (Desktop) ---
+            container.addEventListener('mouseenter', () => {
+                // Only pause if not dragging
+                if (!isDragging) isPaused = true;
+            });
+
+            container.addEventListener('mouseleave', () => {
+                if (!isDragging) {
+                    isPaused = false;
+                    clearTimeout(resumeTimeout);
+                }
+            });
+        }
+    });
 });
