@@ -795,8 +795,9 @@ Wait, user said "Pause animation on hover (desktop only)".
         color: var(--text-muted);
         line-height: 1.4;
     }
+}
 
-    /* Contact Details */
+/* Contact Details */
     .contact-links {
         margin-top: 1.5rem;
         display: flex;

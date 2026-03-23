@@ -124,7 +124,7 @@ Name: ${name}
 Message: ${message}`;
 
             const encodedMessage = encodeURIComponent(whatsappMessage);
-            const whatsappURL = `https://wa.me/918989156956?text=${encodedMessage}`;
+            const whatsappURL = `https://wa.me/919630191571?text=${encodedMessage}`;
 
             window.open(whatsappURL, '_blank');
         });
