@@ -4,8 +4,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Wait for DOM to fully load before executing
-document.addEventListener("DOMContentLoaded", () => {
+const initAbout = () => {
   // Check if current page is the about page or has about-hero section; exit if not
   const isAboutPage = document.querySelector(".page.about-page") || document.querySelector(".about-hero");
   if (!isAboutPage) return;
@@ -152,4 +151,10 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", () => {
     initAnimations();
   });
-});
+};
+
+if (document.readyState === "complete" || document.readyState === "interactive") {
+  initAbout();
+} else {
+  document.addEventListener("DOMContentLoaded", initAbout);
+}

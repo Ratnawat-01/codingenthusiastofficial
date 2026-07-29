@@ -4,8 +4,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Wait for DOM to fully load before executing
-document.addEventListener("DOMContentLoaded", () => {
+const initFeaturedWork = () => {
   // Check if current page is the homepage; exit if not
   const isHomePage = document.querySelector(".page.home-page");
   if (!isHomePage) return;
@@ -164,4 +163,10 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", () => {
     initAnimations();
   });
-});
+};
+
+if (document.readyState === "complete" || document.readyState === "interactive") {
+  initFeaturedWork();
+} else {
+  document.addEventListener("DOMContentLoaded", initFeaturedWork);
+}

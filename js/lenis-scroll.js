@@ -5,8 +5,7 @@ import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Wait for DOM to fully load before executing
-document.addEventListener("DOMContentLoaded", () => {
+const initLenis = () => {
   // Determine if device is mobile (width <= 900px)
   let isMobile = window.innerWidth <= 900;
 
@@ -110,4 +109,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Add resize event listener to handle mobile/desktop transitions
   window.addEventListener("resize", handleResize);
-});
+};
+
+if (document.readyState === "complete" || document.readyState === "interactive") {
+  initLenis();
+} else {
+  document.addEventListener("DOMContentLoaded", initLenis);
+}

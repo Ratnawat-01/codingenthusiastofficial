@@ -3,8 +3,7 @@
 // Import GSAP library for animations
 import gsap from "gsap";
 
-// Wait for DOM to fully load before executing
-document.addEventListener("DOMContentLoaded", () => {
+const initTransition = () => {
   console.log("DOM loaded");
 
   // Trigger initial reveal transition on page load
@@ -134,4 +133,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
-});
+};
+
+if (document.readyState === "complete" || document.readyState === "interactive") {
+  initTransition();
+} else {
+  document.addEventListener("DOMContentLoaded", initTransition);
+}

@@ -1,7 +1,6 @@
 // footer.js
 
-// Wait for DOM to fully load before executing
-document.addEventListener("DOMContentLoaded", () => {
+const initFooter = () => {
     // Check if current page is the contact page; exit if true
     const isContactPage = document.querySelector(".page.contact-page");
     if (isContactPage) return;
@@ -9,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Select DOM elements
     const footer = document.querySelector("footer"); // Footer element to trigger explosion
     const explosionContainer = document.querySelector(".explosion-container"); // Container for particle images
+    if (!footer || !explosionContainer) return;
     let hasExploded = false; // Tracks if explosion has occurred
   
     // Configuration for particle behavior
@@ -129,4 +129,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initialize particles and check footer position on load
     createParticles();
     setTimeout(checkFooterPosition, 500); // Initial check after 500ms
-  });
+};
+
+if (document.readyState === "complete" || document.readyState === "interactive") {
+  initFooter();
+} else {
+  document.addEventListener("DOMContentLoaded", initFooter);
+}

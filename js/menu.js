@@ -3,8 +3,7 @@
 // Import GSAP library for animations
 import gsap from "gsap";
 
-// Wait for DOM to fully load before executing
-document.addEventListener("DOMContentLoaded", () => {
+const initMenu = () => {
   // Select DOM elements
   const menuToggleBtn = document.querySelector(".menu-toggle-btn"); // Menu toggle button
   const navOverlay = document.querySelector(".nav-overlay"); // Navigation overlay
@@ -158,4 +157,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
-});
+};
+
+if (document.readyState === "complete" || document.readyState === "interactive") {
+  initMenu();
+} else {
+  document.addEventListener("DOMContentLoaded", initMenu);
+}
