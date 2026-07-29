@@ -15,6 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Select hero image element
   const heroImg = document.querySelector(".hero-img img");
+  const heroImgHolder = document.querySelector(".hero-img-holder");
+  if (!heroImg || !heroImgHolder) return;
+
   let currentImageIndex = 1; // Tracks current image in sequence
   const totalImages = 10; // Total number of images for cycling
   let scrollTriggerInstance = null; // Stores ScrollTrigger instance for cleanup

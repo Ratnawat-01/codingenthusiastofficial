@@ -1,7 +1,7 @@
 {
-    "name": "prashant-koirala-portfolio",
+    "name": "kartik-ratnawat-portfolio",
     "version": "1.0.0",
-    "description": "Prashant Koirala's Portfolio",
+    "description": "Kartik Ratnawat's Portfolio",
     "main": "index.js",
     "scripts": {
       "dev": "vite",

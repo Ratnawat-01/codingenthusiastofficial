@@ -33,6 +33,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Create section indicators (e.g., "01", "02", ..., "05") and progress dots
     const indicatorContainer = document.querySelector(".featured-work-indicator");
+    const featuredTitles = document.querySelector(".featured-titles");
+    const imagesContainer = document.querySelector(".featured-images");
+    const featuredWorkSection = document.querySelector(".featured-work");
+
+    if (!indicatorContainer || !featuredTitles || !imagesContainer || !featuredWorkSection) return;
+
     indicatorContainer.innerHTML = ""; // Clear existing content
     for (let section = 1; section <= 5; section++) {
       // Add section number
@@ -78,11 +84,9 @@ document.addEventListener("DOMContentLoaded", () => {
       window.innerWidth >= 1600 ? featuredCardPosLarge : featuredCardPosSmall;
 
     // Set up featured titles container
-    const featuredTitles = document.querySelector(".featured-titles");
     const moveDistance = window.innerWidth * 4; // Distance for title movement
 
     // Create image cards dynamically
-    const imagesContainer = document.querySelector(".featured-images");
     imagesContainer.innerHTML = ""; // Clear existing content
     for (let i = 1; i <= 10; i++) {
       const featuredImgCard = document.createElement("div");

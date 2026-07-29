@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Get all service card elements
     const services = gsap.utils.toArray(".service-card");
+    if (!services || services.length === 0) return;
 
     // Create main ScrollTrigger to track entire service section
     const mainTrigger = ScrollTrigger.create({
