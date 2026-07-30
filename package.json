@@ -4,18 +4,18 @@
     "description": "Kartik Ratnawat's Portfolio",
     "main": "index.js",
     "scripts": {
-      "dev": "vite",
-      "build": "vite build",
-      "preview": "vite preview",
-      "host": "vite --host"
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "host": "vite --host"
     },
     "keywords": [],
     "author": "Prashant Koirala",
     "license": "MIT",
     "dependencies": {
-      "gsap": "^3.13.0",
-      "lenis": "^1.3.3",
-      "vite": "^6.3.5"
+        "@vercel/analytics": "^2.0.1",
+        "gsap": "^3.13.0",
+        "lenis": "^1.3.3",
+        "vite": "^6.3.5"
     }
-  }
-  
+}
