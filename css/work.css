@@ -115,8 +115,15 @@
       transform: translateX(0%);
     }
   
+    .work-items {
+      padding: 1.5em;
+      gap: 2em;
+      margin-bottom: 3em;
+    }
+
     .work-items .row {
       flex-direction: column;
+      gap: 2em;
     }
   }
   

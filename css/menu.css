@@ -167,6 +167,10 @@ nav {
   }
   
   @media (max-width: 1000px) {
+    nav {
+      padding: 1em 1.25em;
+    }
+
     .nav-overlay .nav-items .nav-item p {
       font-size: 1.5rem;
     }

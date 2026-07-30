@@ -23,7 +23,41 @@
 
 .about-hero .about-hero-bio {
   text-align: center;
-  width: 50%;
+  width: 55%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25em;
+  margin: 0 auto;
+}
+
+.about-hero .about-hero-bio p.ss {
+  font-size: 1.15rem;
+  line-height: 1.55;
+  opacity: 0.85;
+}
+
+.about-hero .about-hero-bio p.ss strong {
+  color: var(--fg);
+  font-weight: 700;
+  opacity: 1;
+}
+
+.about-hero .bio-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6em 1em;
+  margin-top: 0.5em;
+}
+
+.about-hero .bio-tags span {
+  font-family: "supply-mono", monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
 }
 
 .about-hero .about-hero-portrait-container {
@@ -246,19 +280,38 @@
 
 @media (max-width: 1000px) {
   .about-hero {
-    padding: 8em 2em 4em 2em;
+    height: auto;
+    min-height: 100svh;
+    padding: 7em 1.5em 4em 1.5em;
+    gap: 2em;
   }
 
   .about-hero .about-hero-header h1 {
-    font-size: 4rem;
+    font-size: clamp(3rem, 10vw, 4.5rem);
   }
 
   .about-hero .about-hero-bio {
     width: 100%;
+    padding: 0 0.25em;
+    gap: 1em;
+  }
+
+  .about-hero .about-hero-bio p.ss {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .about-hero .bio-tags {
+    gap: 0.4em 0.75em;
+  }
+
+  .about-hero .bio-tags span {
+    font-size: 0.725rem;
   }
 
   .about-hero .about-hero-portrait-container {
-    width: 28%;
+    width: 130px;
+    height: 182px;
     top: 50%;
   }
 
