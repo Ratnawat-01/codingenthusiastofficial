@@ -50,10 +50,10 @@ const initAbout = () => {
 
     // Animations for larger screens (> 1000px)
     if (window.innerWidth > 1000) {
-      // Portrait animation (if element exists)
-      const portraitElement = document.querySelector(".about-hero-portrait");
-      if (portraitElement) {
-        const portraitAnimation = gsap.to(".about-hero-portrait", {
+      // Portrait container animation (if element exists)
+      const portraitContainer = document.querySelector(".about-hero-portrait-container");
+      if (portraitContainer) {
+        const portraitAnimation = gsap.to(".about-hero-portrait-container", {
           y: -200, // Move up by 200px
           rotation: -25, // Rotate -25 degrees
           scrollTrigger: {
@@ -144,8 +144,90 @@ const initAbout = () => {
     }
   };
 
+  // Tap/Hold & Drag functionality for portrait image
+  const initPortraitDrag = () => {
+    const portrait = document.querySelector(".about-hero-portrait");
+    if (!portrait) return;
+
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+    let currentX = 0;
+    let currentY = 0;
+
+    const getBaseRotation = () => (window.innerWidth <= 1000 ? 0 : 10);
+
+    portrait.style.cursor = "grab";
+    portrait.style.touchAction = "none";
+
+    const getClientCoords = (e) => {
+      if (e.touches && e.touches.length > 0) {
+        return { clientX: e.touches[0].clientX, clientY: e.touches[0].clientY };
+      }
+      return { clientX: e.clientX, clientY: e.clientY };
+    };
+
+    const startDrag = (e) => {
+      if (e.button !== undefined && e.button !== 0) return; // Only main click
+      e.preventDefault();
+      isDragging = true;
+      portrait.classList.add("dragging");
+
+      const coords = getClientCoords(e);
+      startX = coords.clientX - currentX;
+      startY = coords.clientY - currentY;
+
+      window.addEventListener("pointermove", moveDrag, { passive: false });
+      window.addEventListener("pointerup", endDrag);
+      window.addEventListener("pointercancel", endDrag);
+
+      window.addEventListener("mousemove", moveDrag);
+      window.addEventListener("mouseup", endDrag);
+
+      window.addEventListener("touchmove", moveDrag, { passive: false });
+      window.addEventListener("touchend", endDrag);
+    };
+
+    const moveDrag = (e) => {
+      if (!isDragging) return;
+      if (e.cancelable) e.preventDefault();
+
+      const coords = getClientCoords(e);
+      currentX = coords.clientX - startX;
+      currentY = coords.clientY - startY;
+
+      const baseRotation = getBaseRotation();
+      portrait.style.transform = `translate(${currentX}px, ${currentY}px) rotate(${baseRotation - 5}deg) scale(1.05)`;
+    };
+
+    const endDrag = (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      portrait.classList.remove("dragging");
+
+      const baseRotation = getBaseRotation();
+      portrait.style.transform = `translate(${currentX}px, ${currentY}px) rotate(${baseRotation}deg) scale(1)`;
+
+      window.removeEventListener("pointermove", moveDrag);
+      window.removeEventListener("pointerup", endDrag);
+      window.removeEventListener("pointercancel", endDrag);
+
+      window.removeEventListener("mousemove", moveDrag);
+      window.removeEventListener("mouseup", endDrag);
+
+      window.removeEventListener("touchmove", moveDrag);
+      window.removeEventListener("touchend", endDrag);
+    };
+
+    portrait.addEventListener("pointerdown", startDrag, { passive: false });
+    portrait.addEventListener("mousedown", startDrag);
+    portrait.addEventListener("touchstart", startDrag, { passive: false });
+    portrait.addEventListener("dragstart", (e) => e.preventDefault());
+  };
+
   // Run animations on page load
   initAnimations();
+  initPortraitDrag();
 
   // Re-run animations on window resize to recalculate trigger points
   window.addEventListener("resize", () => {

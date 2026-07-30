@@ -26,17 +26,79 @@
   width: 50%;
 }
 
-.about-hero .about-hero-portrait {
+.about-hero .about-hero-portrait-container {
   position: absolute;
   top: 55%;
   left: 50%;
-  transform: translate(-50%, -50%) rotate(10deg);
+  transform: translate(-50%, -50%);
   width: 15%;
   aspect-ratio: 5/7;
+  z-index: 20;
+}
+
+.about-hero .about-hero-portrait {
+  position: relative;
+  width: 100%;
+  height: 100%;
   border-radius: 1em;
   overflow: hidden;
   border: 0.25em solid var(--accent3);
   outline: 0.25em solid var(--accent1);
+  transform: rotate(10deg);
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  will-change: transform;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.2s ease, outline-color 0.2s ease;
+}
+
+.about-hero .about-hero-portrait img {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-hero .about-hero-portrait:hover {
+  outline-color: #ffffff;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+.about-hero .about-hero-portrait.dragging {
+  cursor: grabbing;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+}
+
+.about-hero .about-hero-portrait .drag-hint {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(20, 20, 20, 0.8);
+  backdrop-filter: blur(6px);
+  color: #edf1e8;
+  font-family: "supply-mono", monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  pointer-events: none;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.about-hero .about-hero-portrait:hover .drag-hint,
+.about-hero .about-hero-portrait.dragging .drag-hint {
+  opacity: 1;
+  transform: translateX(-50%) scale(1.05);
+  background: rgba(0, 0, 0, 0.9);
 }
 
 .about-hero .about-hero-bio {
@@ -195,15 +257,20 @@
     width: 100%;
   }
 
-  .about-hero .about-hero-portrait {
-    width: 25%;
+  .about-hero .about-hero-portrait-container {
+    width: 28%;
     top: 50%;
-    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  .about-hero .about-hero-portrait {
+    transform: rotate(0deg);
   }
 
   .about-hero .about-hero-portrait img {
     position: absolute;
-    height: 110%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .about-copy .about-copy-content {
