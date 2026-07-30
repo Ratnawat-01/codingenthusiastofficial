@@ -63,7 +63,7 @@ nav {
     overflow: hidden;
     pointer-events: none;
     opacity: 0;
-    z-index: 10;
+    z-index: 90;
   }
   
   .nav-overlay .nav-items {
