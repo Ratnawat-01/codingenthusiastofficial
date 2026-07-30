@@ -21,14 +21,14 @@ const initHero = () => {
   const totalImages = 10; // Total number of images for cycling
   let scrollTriggerInstance = null; // Stores ScrollTrigger instance for cleanup
 
-  // Cycle through images every 2500ms (2.5 seconds)
+  // Cycle through images every 400ms (0.4 seconds)
   setInterval(() => {
     // Increment image index, reset to 1 if it exceeds totalImages
     currentImageIndex =
       currentImageIndex >= totalImages ? 1 : currentImageIndex + 1;
     // Update hero image source
     heroImg.src = `./images/work-items/work-item-${currentImageIndex}.jpg`;
-  }, 2500);
+  }, 400);
 
   // Initialize animations with ScrollTrigger
   const initAnimations = () => {
