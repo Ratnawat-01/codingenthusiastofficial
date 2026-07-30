@@ -165,8 +165,9 @@
   .services-header {
     position: relative;
     width: 100vw;
-    height: 100vh;
-    padding: 2em;
+    min-height: 60vh;
+    height: auto;
+    padding: 6em 2em 3em 2em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -178,7 +179,7 @@
     width: 100px;
     height: 100px;
     border-radius: 1em;
-    margin-bottom: 2em;
+    margin-bottom: 1.5em;
     outline: 0.25rem solid var(--accent3);
     border: 0.25rem solid var(--fg);
     overflow: hidden;
@@ -193,7 +194,7 @@
   }
   
   .services-header .services-header-title {
-    margin-bottom: 6em;
+    margin-bottom: 1.5em;
   }
   
   /* home - services */
@@ -426,7 +427,7 @@
     .services-header {
       height: auto;
       min-height: 0;
-      padding: 2em 1.5em 1.5em 1.5em;
+      padding: 2em 1.5em 1em 1.5em;
     }
 
     .services-header .services-profile-icon {
@@ -436,7 +437,7 @@
     }
 
     .services-header .services-header-title {
-      margin-bottom: 1.25em;
+      margin-bottom: 1em;
     }
   
     .services {
