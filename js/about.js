@@ -169,9 +169,18 @@ const initAbout = () => {
 
     const startDrag = (e) => {
       if (e.button !== undefined && e.button !== 0) return; // Only main click
-      e.preventDefault();
+      if (e.cancelable) e.preventDefault();
+      e.stopPropagation();
+
       isDragging = true;
       portrait.classList.add("dragging");
+
+      // Temporarily pause Lenis scroll and lock body overflow
+      if (window.__lenis) {
+        try { window.__lenis.stop(); } catch (err) {}
+      }
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
 
       const coords = getClientCoords(e);
       startX = coords.clientX - currentX;
@@ -191,6 +200,7 @@ const initAbout = () => {
     const moveDrag = (e) => {
       if (!isDragging) return;
       if (e.cancelable) e.preventDefault();
+      e.stopPropagation();
 
       const coords = getClientCoords(e);
       currentX = coords.clientX - startX;
@@ -204,6 +214,13 @@ const initAbout = () => {
       if (!isDragging) return;
       isDragging = false;
       portrait.classList.remove("dragging");
+
+      // Restore body overflow and resume Lenis scroll
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      if (window.__lenis) {
+        try { window.__lenis.start(); } catch (err) {}
+      }
 
       const baseRotation = getBaseRotation();
       portrait.style.transform = `translate(${currentX}px, ${currentY}px) rotate(${baseRotation}deg) scale(1)`;
