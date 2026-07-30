@@ -144,36 +144,51 @@ const initAbout = () => {
     }
   };
 
-  // Tap/Hold & Drag functionality for portrait image
+  // Tap/Hold Drag and Pinch-to-Zoom functionality for portrait image
   const initPortraitDrag = () => {
     const portrait = document.querySelector(".about-hero-portrait");
     if (!portrait) return;
 
     let isDragging = false;
+    let isPinching = false;
+
     let startX = 0;
     let startY = 0;
     let currentX = 0;
     let currentY = 0;
+
+    let currentScale = 1;
+    let startPinchDistance = 0;
+    let initialScaleOnPinch = 1;
 
     const getBaseRotation = () => (window.innerWidth <= 1000 ? 0 : 10);
 
     portrait.style.cursor = "grab";
     portrait.style.touchAction = "none";
 
-    const getClientCoords = (e) => {
-      if (e.touches && e.touches.length > 0) {
-        return { clientX: e.touches[0].clientX, clientY: e.touches[0].clientY };
-      }
-      return { clientX: e.clientX, clientY: e.clientY };
+    const getDistance = (touches) => {
+      const dx = touches[0].clientX - touches[1].clientX;
+      const dy = touches[0].clientY - touches[1].clientY;
+      return Math.hypot(dx, dy);
     };
 
-    const startDrag = (e) => {
-      if (e.button !== undefined && e.button !== 0) return; // Only main click
+    const getCenterCoords = (touches) => {
+      return {
+        clientX: (touches[0].clientX + touches[1].clientX) / 2,
+        clientY: (touches[0].clientY + touches[1].clientY) / 2,
+      };
+    };
+
+    const applyTransform = (isInteracting = false) => {
+      const baseRotation = getBaseRotation();
+      const rot = isInteracting ? baseRotation - 3 : baseRotation;
+      portrait.style.transform = `translate(${currentX}px, ${currentY}px) rotate(${rot}deg) scale(${currentScale})`;
+    };
+
+    const startInteraction = (e) => {
+      if (e.button !== undefined && e.button !== 0) return; // Main click only
       if (e.cancelable) e.preventDefault();
       e.stopPropagation();
-
-      isDragging = true;
-      portrait.classList.add("dragging");
 
       // Temporarily pause Lenis scroll and lock body overflow
       if (window.__lenis) {
@@ -182,63 +197,117 @@ const initAbout = () => {
       document.body.style.overflow = "hidden";
       document.documentElement.style.overflow = "hidden";
 
-      const coords = getClientCoords(e);
-      startX = coords.clientX - currentX;
-      startY = coords.clientY - currentY;
+      if (e.touches && e.touches.length >= 2) {
+        // Pinch zoom start
+        isPinching = true;
+        isDragging = false;
+        startPinchDistance = getDistance(e.touches);
+        initialScaleOnPinch = currentScale;
 
-      window.addEventListener("pointermove", moveDrag, { passive: false });
-      window.addEventListener("pointerup", endDrag);
-      window.addEventListener("pointercancel", endDrag);
+        const center = getCenterCoords(e.touches);
+        startX = center.clientX - currentX;
+        startY = center.clientY - currentY;
+      } else {
+        // Single touch / mouse drag start
+        isDragging = true;
+        isPinching = false;
+        portrait.classList.add("dragging");
 
-      window.addEventListener("mousemove", moveDrag);
-      window.addEventListener("mouseup", endDrag);
+        const coords = e.touches ? e.touches[0] : e;
+        startX = coords.clientX - currentX;
+        startY = coords.clientY - currentY;
+      }
 
-      window.addEventListener("touchmove", moveDrag, { passive: false });
-      window.addEventListener("touchend", endDrag);
+      window.addEventListener("touchmove", moveInteraction, { passive: false });
+      window.addEventListener("touchend", endInteraction);
+      window.addEventListener("pointermove", moveInteraction, { passive: false });
+      window.addEventListener("pointerup", endInteraction);
+      window.addEventListener("pointercancel", endInteraction);
+      window.addEventListener("mousemove", moveInteraction);
+      window.addEventListener("mouseup", endInteraction);
     };
 
-    const moveDrag = (e) => {
-      if (!isDragging) return;
+    const moveInteraction = (e) => {
+      if (!isDragging && !isPinching) return;
       if (e.cancelable) e.preventDefault();
       e.stopPropagation();
 
-      const coords = getClientCoords(e);
-      currentX = coords.clientX - startX;
-      currentY = coords.clientY - startY;
+      if (e.touches && e.touches.length >= 2) {
+        // Handle 2-finger pinch zoom + drag
+        isPinching = true;
+        isDragging = false;
 
-      const baseRotation = getBaseRotation();
-      portrait.style.transform = `translate(${currentX}px, ${currentY}px) rotate(${baseRotation - 5}deg) scale(1.05)`;
+        const newDistance = getDistance(e.touches);
+        if (startPinchDistance > 0) {
+          const pinchFactor = newDistance / startPinchDistance;
+          // Clamp scale between 0.6x and 3.0x
+          currentScale = Math.max(0.6, Math.min(3.0, initialScaleOnPinch * pinchFactor));
+        }
+
+        const center = getCenterCoords(e.touches);
+        currentX = center.clientX - startX;
+        currentY = center.clientY - startY;
+
+        applyTransform(true);
+      } else if (isDragging || (e.touches && e.touches.length === 1)) {
+        // Handle single finger / mouse drag
+        const coords = e.touches ? e.touches[0] : e;
+        currentX = coords.clientX - startX;
+        currentY = coords.clientY - startY;
+
+        applyTransform(true);
+      }
     };
 
-    const endDrag = (e) => {
-      if (!isDragging) return;
+    const endInteraction = (e) => {
+      if (!isDragging && !isPinching) return;
+
+      if (e.touches && e.touches.length === 1) {
+        // Smoothly transition from pinch zoom to single-finger drag
+        isPinching = false;
+        isDragging = true;
+        portrait.classList.add("dragging");
+        const coords = e.touches[0];
+        startX = coords.clientX - currentX;
+        startY = coords.clientY - currentY;
+        return;
+      }
+
       isDragging = false;
+      isPinching = false;
       portrait.classList.remove("dragging");
 
-      // Restore body overflow and resume Lenis scroll
+      // Restore body overflow and Lenis scroll
       document.body.style.overflow = "";
       document.documentElement.style.overflow = "";
       if (window.__lenis) {
         try { window.__lenis.start(); } catch (err) {}
       }
 
-      const baseRotation = getBaseRotation();
-      portrait.style.transform = `translate(${currentX}px, ${currentY}px) rotate(${baseRotation}deg) scale(1)`;
+      applyTransform(false);
 
-      window.removeEventListener("pointermove", moveDrag);
-      window.removeEventListener("pointerup", endDrag);
-      window.removeEventListener("pointercancel", endDrag);
-
-      window.removeEventListener("mousemove", moveDrag);
-      window.removeEventListener("mouseup", endDrag);
-
-      window.removeEventListener("touchmove", moveDrag);
-      window.removeEventListener("touchend", endDrag);
+      window.removeEventListener("touchmove", moveInteraction);
+      window.removeEventListener("touchend", endInteraction);
+      window.removeEventListener("pointermove", moveInteraction);
+      window.removeEventListener("pointerup", endInteraction);
+      window.removeEventListener("pointercancel", endInteraction);
+      window.removeEventListener("mousemove", moveInteraction);
+      window.removeEventListener("mouseup", endInteraction);
     };
 
-    portrait.addEventListener("pointerdown", startDrag, { passive: false });
-    portrait.addEventListener("mousedown", startDrag);
-    portrait.addEventListener("touchstart", startDrag, { passive: false });
+    // Wheel zoom support for desktop / trackpad
+    portrait.addEventListener("wheel", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const zoomFactor = e.deltaY < 0 ? 1.08 : 0.92;
+      currentScale = Math.max(0.6, Math.min(3.0, currentScale * zoomFactor));
+      applyTransform(false);
+    }, { passive: false });
+
+    portrait.addEventListener("touchstart", startInteraction, { passive: false });
+    portrait.addEventListener("pointerdown", startInteraction, { passive: false });
+    portrait.addEventListener("mousedown", startInteraction);
     portrait.addEventListener("dragstart", (e) => e.preventDefault());
   };
 
