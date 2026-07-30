@@ -171,24 +171,62 @@ nav {
       padding: 1em 1.25em;
     }
 
-    .nav-overlay .nav-items .nav-item p {
-      font-size: 1.5rem;
+    .nav-overlay {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5.5em 1.5em 2em 1.5em;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
-  
+
+    .nav-overlay .nav-items {
+      position: relative;
+      top: auto;
+      left: auto;
+      transform: none;
+      width: 100%;
+      gap: 0.65em;
+      margin: auto 0;
+    }
+
+    .nav-overlay .nav-items .nav-item {
+      width: max-content;
+      max-width: 92%;
+      margin: 0 auto;
+    }
+
+    .nav-overlay .nav-items .nav-item p {
+      font-size: 1.15rem;
+      white-space: nowrap;
+    }
+
+    .nav-overlay .nav-items .nav-item p a {
+      padding: 0.45em 0.85em 0.35em 0.85em;
+    }
+
     .nav-overlay .nav-footer {
+      position: relative;
+      left: auto;
+      bottom: auto;
+      width: 100%;
+      padding: 1.25em 0 0 0;
+      margin-top: 1.5em;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      gap: 0.75em;
     }
-  
+
     .nav-overlay .nav-footer-item:nth-child(1) .nav-footer-item-header {
       justify-content: center;
     }
-  
+
     .nav-overlay .nav-footer-item:nth-child(2) {
       display: none;
     }
-  
+
     .nav-overlay .nav-footer-item:nth-child(3) .nav-footer-item-header {
       justify-content: center;
     }

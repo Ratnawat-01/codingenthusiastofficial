@@ -308,18 +308,45 @@
   }
 
   @media (max-width: 1000px) {
+    .hero {
+      padding: 6em 1em 2em 1em;
+    }
+
+    .hero .hero-header-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero .hero-header.hero-header-1,
+    .hero .hero-header.hero-header-2 {
+      transform: translateX(0);
+    }
+
+    .hero .hero-header h1 {
+      font-size: clamp(2.2rem, 11.5vw, 4.2rem);
+      white-space: nowrap;
+      word-break: keep-all;
+      hyphens: none;
+      letter-spacing: -0.02em;
+      text-align: center;
+    }
+
     .hero .hero-footer .hero-footer-symbols {
       display: none;
     }
   
     .hero .hero-footer {
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
+      padding: 1.5em 1em;
     }
   
     .hero .hero-footer .hero-footer-scroll-down {
-      left: 2em;
-      transform: translateX(0%);
+      position: relative;
+      left: auto;
+      transform: none;
     }
   
     .featured-work {
