@@ -380,6 +380,12 @@
       border-radius: 1.2em;
     }
 
+    .featured-title-img a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
     .featured-work .featured-titles {
       width: 100vw;
       flex-direction: column;
