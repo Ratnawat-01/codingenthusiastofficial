@@ -54,6 +54,17 @@ footer .footer-header .footer-tagline {
   word-spacing: 0.15em;
 }
 
+footer .footer-header .footer-tagline a {
+  color: inherit;
+  text-decoration: underline;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+footer .footer-header .footer-tagline a:hover {
+  opacity: 1;
+  color: #ffffff;
+}
+
 footer .footer-row {
   display: flex;
   justify-content: space-around;
