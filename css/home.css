@@ -35,16 +35,8 @@
     padding: 2em;
     display: flex;
     justify-content: space-between;
-  }
-  
-  .hero .hero-footer .hero-footer-scroll-down {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  .hero .hero-footer .hero-footer-symbols {
-    height: 1rem;
+    align-items: center;
+    z-index: 5;
   }
   
   /* home - hero img holder */
@@ -335,23 +327,8 @@
       line-height: 0.95;
     }
 
-    .hero .hero-footer .hero-footer-symbols {
-      display: none;
-    }
-  
     .hero .hero-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       padding: 1.5em 1em;
-      z-index: 5;
-      width: 100%;
-    }
-  
-    .hero .hero-footer .hero-footer-scroll-down {
-      position: relative;
-      left: auto;
-      transform: none;
     }
   
     .featured-work {
