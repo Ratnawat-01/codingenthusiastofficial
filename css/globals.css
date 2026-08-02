@@ -141,15 +141,24 @@ p.mn {
   .contact-cta .contact-text-small {
     position: relative;
     z-index: 1;
+    text-align: center;
+    width: 100%;
   }
   
   .contact-cta .contact-text-large {
     position: relative;
     z-index: 1;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   .contact-cta .contact-text-large h1 {
     font-size: 7rem;
+    text-align: center;
+    width: 100%;
   }
   
   @keyframes gradientMove {
@@ -186,22 +195,42 @@ p.mn {
   
     .contact-cta {
       height: max-content;
-      padding: 8em 2em;
+      padding: 6em 1.5em;
     }
   
     .contact-cta .contact-button {
       width: 95%;
-      height: 250px;
+      max-width: 600px;
+      height: auto;
+      min-height: 220px;
+      padding: 2.5em 1.5em;
       gap: 1em;
       border-radius: 2em;
-    }
-  
-    .contact-cta .contact-text-small {
-      width: 75%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
     }
   
+    .contact-cta .contact-text-small {
+      width: 90%;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+    }
+  
+    .contact-cta .contact-text-large {
+      width: 100%;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     .contact-cta .contact-text-large h1 {
-      font-size: 3rem;
+      font-size: clamp(2rem, 7.5vw, 3.5rem);
+      text-align: center;
+      width: 100%;
     }
   }
